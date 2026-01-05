@@ -1,0 +1,66 @@
+main {
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin: 140px auto 0;
+}
+
+main > div {
+  background-color: var(--BG-variant);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 33vw;
+  font-size: 1.5rem;
+}
+
+main > div img {
+  width: 100%;
+  height: clamp(200px 10vh 500px);
+  object-fit: cover;
+  display: block;
+}
+
+main > div p {
+  padding: 0.3em 0.5em;
+  line-height: 1.4;
+}
+
+.imageHolder {
+  position: relative;
+}
+
+.likeButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+
+  width: 5rem;
+  height: 5rem;
+
+  background: var(--Hover-Color);
+  border: solid var(--Border-Color) 2px;
+
+  font-size: 1.5em;
+
+  border-radius: 20%;
+
+  cursor: pointer;
+}
+
+.likeButton span {
+  position: absolute;
+  left: 0.2em;
+  bottom: 0.2em;
+
+  font-size: 0.5em;
+
+  color: var(--Text-Color);
+}
+
+.likeButton:hover {
+  filter: brightness(80%);
+}

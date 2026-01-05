@@ -1,0 +1,50 @@
+/*darkmode colors*/
+:root{
+    --welcome-text: #F9FAFB;
+    --Welcome-BG: #1E293B;
+}
+/*lightmode colors*/
+.lightmode{
+    --welcome-text: #1E293B;
+    --Welcome-BG:  #F9FAFB;
+}
+/*if the video overflows it gets hidden*/
+body {
+    overflow: hidden;
+}
+
+/**/
+.BGvideo{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .BGvideo{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    .BGvideo{
+        width: auto;
+        height: 100%;
+    }
+}
+
+.Welcome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+#Welcome-Text{
+    background-color: var(--Welcome-BG);
+    color: var(--welcome-text);
+    padding: 0.25em;
+    border-radius: 15px;
+}

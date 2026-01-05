@@ -1,0 +1,77 @@
+/*Variable colors that i can change*/
+:root {
+    --BG-variant: #1E293B;
+    --Border-Color: #334155;
+}
+
+/*same variabls but are active if the theme gets changed*/
+.lightmode {
+    --BG-variant: #FFFFFF;
+    --Border-Color: #d3d3d3;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 120px);
+
+    padding: 0 2rem;
+    margin-top: 90px;
+    gap: 1.5rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+    overflow: hidden;
+}
+
+.history-image1 {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-image1 img {
+    width: 100%;
+    height: clamp(300px 5vh 900px);
+
+    display: block;
+
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.historyTextContainer {
+    width: 100%;
+    height: 100%;
+
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 2rem;
+}
+
+.historyTextContainer div {
+    background: var(--BG-variant);
+    padding: 1.25rem;
+    border-radius: 10px;
+    line-height: 1.5;
+    border-color: var(--Border-Color);
+    border: solid 1px;
+    font-size: 1.5rem;
+}

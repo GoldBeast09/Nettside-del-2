@@ -1,0 +1,49 @@
+:root{
+    --BG-variant: #1E293B;
+    --Border-Color: #334155;
+}
+.lightmode{
+    --BG-variant: #FFFFFF;
+    --Border-Color: #d3d3d3;
+}
+
+main{
+    padding-top: 90px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 90px);
+    box-sizing: border-box;
+}
+
+
+.Fort-worth-stockyards{
+    width: max(300px, 50%);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: var(--BG-variant);
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+
+.Fort-worth-stockyards img{
+    width: 100%;
+    height: clamp(300px 10vh 700px);     
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+
+@media (max-width: 600px){
+    .Fort-worth-stockyards img{
+        height: 180px;
+    }
+}

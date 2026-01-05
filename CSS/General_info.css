@@ -1,0 +1,28 @@
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 95px);
+    gap: 2rem;
+    padding-top: 75px; /* To account for the fixed header */
+    width: 98vw;
+}
+
+
+iframe {
+    width:45vw;
+    height: auto;
+    aspect-ratio: 16/9;
+}
+
+@media(max-width: 900px){
+    main{
+        flex-direction: column;
+        gap: 5rem;
+    }
+    iframe{
+        width: 80vw;
+    }
+}

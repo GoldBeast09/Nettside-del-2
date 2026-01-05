@@ -1,0 +1,74 @@
+:root {
+  --Text-Over-Picture: #f9fafb;
+  --BG-Text-Over-Picture: #1e293b;
+}
+
+.lightmode {
+  --Text-Over-Picture: #111827;
+  --BG-Text-Over-Picture: #dfe6ee;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  margin: 80px auto auto auto;
+  min-height: calc(100vh - 180px);
+}
+
+.itemFlex {
+  width: clamp(300px, 30vw, 1400px);
+
+  position: relative;
+
+  flex: 1 1 auto;
+
+  border: solid 2px;
+  border-radius: 10px;
+
+  overflow: hidden;
+  aspect-ratio: 1.5/1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.itemFlex:hover .zoom-image {
+  transform: scale(1.2);
+}
+
+.align-text {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  z-index: 1;
+}
+
+.textOverPicture {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  color: var(--Text-Over-Picture);
+  background-color: var(--BG-Text-Over-Picture);
+  font-size: clamp(1.75rem, 2vw, 5rem);
+  padding: 0.5em;
+  border-radius: 10px;
+}
