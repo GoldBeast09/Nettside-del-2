@@ -146,14 +146,15 @@ body {
 } */
 
 /*moves the first line up*/
-.ham-menu span:nth-child(1) {
+/* .ham-menu span:nth-child(1) {
   top: 25%;
-}
+}*/
 
 /*moves the third line down(all lines are 25% from eachother)*/
-.ham-menu span:nth-child(3) {
+/* .ham-menu span:nth-child(3) {
   top: 75%;
 }
+*/
 
 /*style for the theme switch buttona*/
 #theme-switch {
@@ -197,4 +198,11 @@ body {
 /*forces it self on the top so it is visable*/
 .lightmode #theme-switch svg:first-child {
   display: block;
+}
+
+.ham-sites {
+  background-color: var(--BG-variant);
+  padding: 0.5em;
+  border-radius: 20px;
+  border: solid 3px var(--Border-Color);
 }
