@@ -17,6 +17,8 @@ main {
 
   align-items: center;
   justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
 }
 
 .Options {

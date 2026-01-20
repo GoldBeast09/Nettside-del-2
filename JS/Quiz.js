@@ -1,7 +1,7 @@
-const QuestionElement = document.getElementsByClassName("question");
-const correctAnswers = document.getElementsByClassName("correctAnswers");
-const totalQuestions = document.getElementsByClassName("totalQuestions");
-const Options = document.querySelectorAll(".Option");
+const questionElement = document.getElementById("question");
+const correctAnswersElement = document.getElementById("correctAnswers");
+const totalQuestionsElement = document.getElementById("totalQuestions");
+const optionsElement = document.querySelectorAll(".Option");
 
 const questions = [
   {
@@ -16,7 +16,7 @@ const questions = [
   },
   {
     question: "Placeholder three",
-    answers: ["option1", "option2", "option3", "option4"],
+    answers: ["option1", "test", "option3", "option4"],
     corectIndex: 3,
   },
   {
@@ -24,4 +24,28 @@ const questions = [
     answers: ["option1", "option2", "option3", "option4"],
     corectIndex: 4,
   },
+  {
+    question: "Placeholder 5",
+    answers: ["option1", "option2", "option3", "option4"],
+    corectIndex: 1,
+  },
 ];
+
+let correctAnswers = 0;
+let totalQuestions = questions.length;
+let answeredQuestions = 0;
+
+correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
+totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
+
+optionsElement.forEach((button, index) => {
+  const optionText = button.querySelector(".optionText");
+  optionText.textContent = questions[0].answers[index];
+});
+
+/*
+Logic to move to the next question after an answer is selected.
+Logic to check if the selected answer is correct and update the score.
+Logic to update the displayed question and options for each new question.
+Logic to handle the end of the quiz (show results, allow restart, etc.).
+*/
