@@ -11,7 +11,7 @@ const questions = [
   },
   {
     question: "Placeholder two",
-    answers: ["option1", "option2", "option3", "option4"],
+    answers: ["option1", "test", "option3", "option4"],
     corectIndex: 2,
   },
   {
@@ -38,10 +38,13 @@ let answeredQuestions = 0;
 correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
 totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
 
-optionsElement.forEach((button, index) => {
-  const optionText = button.querySelector(".optionText");
-  optionText.textContent = questions[0].answers[index];
-});
+function updateUi(currentQuestion) {
+  optionsElement.forEach((button, index) => {
+    const optionText = button.querySelector(".optionText");
+    optionText.textContent = questions[currentQuestion].answers[index];
+  });
+  questionElement.textContent = questions[currentQuestion].question;
+}
 
 /*
 Logic to move to the next question after an answer is selected.
