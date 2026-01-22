@@ -3,6 +3,9 @@ const correctAnswersElement = document.getElementById("correctAnswers");
 const totalQuestionsElement = document.getElementById("totalQuestions");
 const optionsElement = document.querySelectorAll(".Option");
 
+import { playAudio } from "./Sound.js";
+
+
 const questions = [
   {
     question: "Placeholder one",
@@ -62,8 +65,10 @@ function updateUi(currentQuestion) {
 function compareAnswers(answer, question) {
   if (answer === questions[question].corectIndex) {
     console.log("correct");
+    playAudio("correct-156911.mp3")
   } else {
     console.log("wrong");
+    playAudio("wrong-47985.mp3")
   }
 }
 
