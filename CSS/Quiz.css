@@ -1,3 +1,19 @@
+.clicked {
+  --BG-variant: grey;
+}
+
+.corectAnswer {
+  --BG-Color: green;
+}
+
+.wrongAnswer {
+  --BG-Color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 main {
   margin-top: 7.5rem;
   height: calc(100vh - 5rem);
@@ -45,6 +61,7 @@ main {
   border: none;
   background: var(--BG-variant);
   cursor: pointer;
+  background-color: --;
 }
 
 p {
@@ -56,4 +73,30 @@ h1 {
 }
 h2 {
   font-size: 2rem;
+}
+
+#logicButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  gap: 20rem;
+}
+
+#nextButton {
+  margin-top: 5rem;
+  padding: 2rem 9rem;
+
+  border: none;
+  background: var(--BG-variant);
+  cursor: pointer;
+}
+
+#compareAnswers {
+  margin-top: 5rem;
+  padding: 2rem 7rem;
+
+  border: none;
+  background: var(--BG-variant);
+  cursor: pointer;
 }

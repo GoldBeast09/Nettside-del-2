@@ -1,35 +1,40 @@
+const body = document.body;
+const quizElements = document.getElementsByClassName("quizContainer");
+
 const questionElement = document.getElementById("question");
 const correctAnswersElement = document.getElementById("correctAnswers");
 const totalQuestionsElement = document.getElementById("totalQuestions");
 const optionsElement = document.querySelectorAll(".Option");
 
-import { playAudio } from "./Sound.js";
+const nextButton = document.getElementById("nextButton");
+const compareAnswersButton = document.getElementById("compareAnswers");
 
+import { playAudio } from "./Sound.js";
 
 const questions = [
   {
-    question: "Placeholder one",
-    answers: ["option1", "option2", "option3", "option4"],
-    corectIndex: 0,
-  },
-  {
-    question: "Placeholder two",
-    answers: ["option1", "test", "option3", "option4"],
+    question: "What Battle in 1836 lead to independence of Texas?",
+    answers: ["The fight of Texas", "The battle of San Jacinto", "The Mexican disagreement", "The Battle for freedom"],
     corectIndex: 1,
   },
   {
-    question: "Placeholder three",
-    answers: ["option1", "test", "option3", "option4"],
-    corectIndex: 2,
-  },
-  {
-    question: "Placeholder four",
-    answers: ["option1", "option2", "option3", "option4"],
+    question: "What is the capital of Texas?",
+    answers: ["Houston", "San Antonio", "Dallas", "Austin"],
     corectIndex: 3,
   },
   {
-    question: "Placeholder 5",
-    answers: ["option1", "option2", "option3", "option4"],
+    question: "What is the nickname of Texas?",
+    answers: ["The Sunshine State", "The Lone Star State", "The Empire State", "The Peach State"],
+    corectIndex: 1,
+  },
+  {
+    question: "Which river forms much of the border between Texas and Mexico?",
+    answers: ["Colorado River", "Brazos River", "Rio Grande", "Red River"],
+    corectIndex: 2,
+  },
+  {
+    question: "In what year did Texas join the United States?",
+    answers: ["1845", "1836", "1861", "1900"],
     corectIndex: 0,
   },
 ];
@@ -37,44 +42,101 @@ const questions = [
 let correctAnswers = 0;
 let totalQuestions = questions.length;
 let answeredQuestions = 0;
-//Må komme på et bedre navn senere
-let currentQuestionForNow = 0;
 
-correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
-totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
+let currentQuestionIndex = 0;
+let answeredQuestion = false;
+let clickedOption = undefined;
+let comparedQuestion = false;
 
 const randomQuestion = () => {
-  return Math.floor(Math.random() * questions.length);
+  currentQuestionIndex = Math.floor(Math.random() * questions.length);
 };
 
-updateUi(randomQuestion());
+randomQuestion();
+updateQuestions(currentQuestionIndex);
+updateScore();
 
-function updateUi(currentQuestion) {
+function updateQuestions(currentQuestion) {
   optionsElement.forEach((button, index) => {
     const optionText = button.querySelector(".optionText");
     optionText.textContent = questions[currentQuestion].answers[index];
+    button.classList.remove("clicked");
+  });
+  body.classList.remove("wrongAnswer");
+  body.classList.remove("corectAnswer");
+  questionElement.textContent = questions[currentQuestion].question;
+}
 
-    questionElement.textContent = questions[currentQuestion].question;
+function updateScore() {
+  correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
+  totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
+}
 
+clickedQuestion();
+function clickedQuestion() {
+  optionsElement.forEach((button, index) => {
     button.addEventListener("click", () => {
-      compareAnswers(index, currentQuestion);
+      optionsElement.forEach((button) => {
+        button.classList.remove("clicked");
+      });
+      button.classList.add("clicked");
+      clickedOption = index;
+      isQuizDone();
     });
   });
 }
 
+compareAnswersButton.addEventListener("click", () => {
+  if (answeredQuestion === true) {
+    console.log("click true");
+    compareAnswers(clickedOption, currentQuestionIndex);
+  } else {
+    console.log("click false");
+    return;
+  }
+  answeredQuestion = false;
+});
+
+nextButton.addEventListener("click", () => {
+  if (comparedQuestion === true) {
+    console.log("click true");
+    updateQuestions(currentQuestionIndex);
+  } else {
+    console.log("click false");
+    return;
+  }
+  comparedQuestion = false;
+});
+
 function compareAnswers(answer, question) {
   if (answer === questions[question].corectIndex) {
     console.log("correct");
-    playAudio("correct-156911.mp3")
+    playAudio("correct-156911.mp3");
+    correctAnswers = correctAnswers + 1;
+    body.classList.add("corectAnswer");
   } else {
     console.log("wrong");
-    playAudio("wrong-47985.mp3")
+    playAudio("wrong-47985.mp3");
+    body.classList.add("wrongAnswer");
   }
+  answeredQuestions = answeredQuestions + 1;
+
+  if (currentQuestionIndex === questions.length - 1) {
+    currentQuestionIndex = 0;
+  } else {
+    currentQuestionIndex = currentQuestionIndex + 1;
+  }
+  comparedQuestion = true;
+  updateScore();
+  console.log(currentQuestionIndex);
 }
 
-/*
-Logic to move to the next question after an answer is selected.
-Logic to check if the selected answer is correct and update the score.
-Logic to update the displayed question and options for each new question.
-Logic to handle the end of the quiz (show results, allow restart, etc.).
-*/
+function isQuizDone() {
+  if (answeredQuestions === questions.length) {
+    quizElements.classList.add("hidden");
+    console.log("hidden");
+    return;
+  } else {
+    answeredQuestion = true;
+  }
+}
