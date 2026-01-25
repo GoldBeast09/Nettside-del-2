@@ -1,5 +1,5 @@
 const body = document.body;
-const quizElements = document.getElementsByClassName("quizContainer");
+const quizElement = document.querySelector(".quizContainer");
 
 const questionElement = document.getElementById("question");
 const correctAnswersElement = document.getElementById("correctAnswers");
@@ -100,7 +100,7 @@ compareAnswersButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   if (comparedQuestion === true) {
     console.log("click true");
-    updateQuestions(currentQuestionIndex);
+    hideQuiz();
   } else {
     console.log("click false");
     return;
@@ -133,10 +133,19 @@ function compareAnswers(answer, question) {
 
 function isQuizDone() {
   if (answeredQuestions === questions.length) {
-    quizElements.classList.add("hidden");
-    console.log("hidden");
     return;
   } else {
     answeredQuestion = true;
+  }
+}
+
+function hideQuiz() {
+  if (answeredQuestions === questions.length) {
+    quizElement?.classList.add("hidden");
+    body.classList.remove("wrongAnswer");
+    body.classList.remove("corectAnswer");
+    return;
+  } else {
+    updateQuestions(currentQuestionIndex);
   }
 }
