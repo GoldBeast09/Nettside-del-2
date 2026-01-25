@@ -140,6 +140,7 @@ function compareAnswers(answer, question) {
 
 function isQuizDone() {
   if (answeredQuestions === questions.length) {
+    window.location.href = "QuizComplete.html";
     return;
   } else {
     updateQuestions(currentQuestionIndex);
