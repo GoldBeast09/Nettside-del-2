@@ -1,5 +1,4 @@
 const body = document.body;
-const quizElement = document.querySelector(".quizContainer");
 
 const questionElement = document.getElementById("question");
 const correctAnswersElement = document.getElementById("correctAnswers");
@@ -8,6 +7,8 @@ const optionsElement = document.querySelectorAll(".Option");
 
 const nextButton = document.getElementById("nextButton");
 const compareAnswersButton = document.getElementById("compareAnswers");
+
+const finalScore = document.getElementsByClassName("correctAnswers");
 
 import { playAudio } from "./Sound.js";
 
@@ -140,6 +141,8 @@ function compareAnswers(answer, question) {
 
 function isQuizDone() {
   if (answeredQuestions === questions.length) {
+    sessionStorage.setItem("correctAnswers", correctAnswers);
+    sessionStorage.setItem("totalQuestions", totalQuestions);
     window.location.href = "QuizComplete.html";
     return;
   } else {

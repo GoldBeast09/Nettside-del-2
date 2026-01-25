@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../CSS/Quiz.css" />
     <script src="../JS/Theme-Change.js" defer></script>
     <script src="../JS/Ham-Menu.js" defer></script>
-    <script type="module" src="../JS/Quiz.js" defer></script>
   </head>
   <body>
     <header class="Nav">
@@ -79,10 +78,12 @@
         </ul>
       </div>
     </header>
+
     <main>
       <div id="finisedQuiz">
         <div class="Title"><h1 class="Text-style">Thank you for playing this quiz</h1></div>
-        <div class="correctAnswers"><h2 class="Text-style">Test</h2></div>
+        <div><h2 class="Text-style" id="correctAnswers">Test</h2></div>
+        <div><h2 class="Text-style" id="compliment">compliment</h2></div>
         <div class="replayQuiz">
           <a href="Quiz.html">
             <button id="retryButton"><h2 class="Text-style">Retry?</h2></button>
@@ -90,5 +91,37 @@
         </div>
       </div>
     </main>
+
+    <script>
+      const correct = sessionStorage.getItem("correctAnswers");
+      const total = sessionStorage.getItem("totalQuestions");
+
+      document.getElementById("correctAnswers").textContent = `You got ${correct} of ${total} possible questions correct`;
+      const compliment = document.getElementById("compliment");
+
+      let percentage = 0;
+
+      function calculatePercentage() {
+        percentage = correct / total;
+        console.log(percentage);
+      }
+      calculatePercentage();
+      complimentText();
+      function complimentText() {
+        if (correct == total) {
+          compliment.textContent = "Well done you know this!";
+        } else if (percentage >= 0.8) {
+          compliment.textContent = "Well done! Want to play again to get the last one/few?";
+        } else if (percentage >= 0.6) {
+          compliment.textContent = "At least you got more than half correct! Want to try again?";
+        } else if (correct >= 0.4) {
+          compliment.textContent = "You did good a little more practice and you have this! Want to try again?";
+        } else if (correct >= 0.2) {
+          compliment.textContent = "At least you got one or more correct practice some more and you got this! Want to try again?";
+        } else if (correct >= 0) {
+          compliment.textContent = "Unfortunate maybe practice some more and then you have this! Want to try again?";
+        }
+      }
+    </script>
   </body>
 </html>
