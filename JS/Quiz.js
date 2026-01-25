@@ -76,6 +76,9 @@ clickedQuestion();
 function clickedQuestion() {
   optionsElement.forEach((button, index) => {
     button.addEventListener("click", () => {
+      if (comparedQuestion === true) {
+        return;
+      }
       optionsElement.forEach((button) => {
         button.classList.remove("clicked");
       });
