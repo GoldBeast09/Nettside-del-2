@@ -84,9 +84,13 @@ function clickedQuestion() {
       });
       button.classList.add("clicked");
       clickedOption = index;
-      isQuizDone();
+      AnsweredQuestion();
     });
   });
+}
+
+function AnsweredQuestion() {
+  answeredQuestion = true;
 }
 
 compareAnswersButton.addEventListener("click", () => {
@@ -103,7 +107,7 @@ compareAnswersButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   if (comparedQuestion === true) {
     console.log("click true");
-    hideQuiz();
+    isQuizDone();
   } else {
     console.log("click false");
     return;
@@ -136,17 +140,6 @@ function compareAnswers(answer, question) {
 
 function isQuizDone() {
   if (answeredQuestions === questions.length) {
-    return;
-  } else {
-    answeredQuestion = true;
-  }
-}
-
-function hideQuiz() {
-  if (answeredQuestions === questions.length) {
-    quizElement?.classList.add("hidden");
-    body.classList.remove("wrongAnswer");
-    body.classList.remove("corectAnswer");
     return;
   } else {
     updateQuestions(currentQuestionIndex);

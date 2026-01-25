@@ -12,6 +12,7 @@
 
 .hidden {
   visibility: hidden;
+  display: none;
 }
 
 main {
@@ -95,6 +96,22 @@ h2 {
 #compareAnswers {
   margin-top: 5rem;
   padding: 2rem 7rem;
+
+  border: none;
+  background: var(--BG-variant);
+  cursor: pointer;
+}
+
+#finisedQuiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#retryButton {
+  margin-top: 5rem;
+  padding: 3rem 7rem;
 
   border: none;
   background: var(--BG-variant);
