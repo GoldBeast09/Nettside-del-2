@@ -96,10 +96,8 @@ function updateScore() {
 
 compareAnswersButton.addEventListener("click", () => {
   if (answeredQuestion === true) {
-    console.log("click true");
     compareAnswers(clickedOption, currentQuestionIndex);
   } else {
-    console.log("click false");
     return;
   }
   answeredQuestion = false;
@@ -107,12 +105,10 @@ compareAnswersButton.addEventListener("click", () => {
 
 function compareAnswers(answer, question) {
   if (answer === questions[question].corectIndex) {
-    console.log("correct");
     playAudio("correct-156911.mp3");
     correctAnswers = correctAnswers + 1;
     body.classList.add("corectAnswer");
   } else {
-    console.log("wrong");
     playAudio("wrong-47985.mp3");
     body.classList.add("wrongAnswer");
   }
@@ -125,15 +121,12 @@ function compareAnswers(answer, question) {
   }
   comparedQuestion = true;
   updateScore();
-  console.log(currentQuestionIndex);
 }
 
 nextButton.addEventListener("click", () => {
   if (comparedQuestion === true) {
-    console.log("click true");
     isQuizDone();
   } else {
-    console.log("click false");
     return;
   }
   comparedQuestion = false;
