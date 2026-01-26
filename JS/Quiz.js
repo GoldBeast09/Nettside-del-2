@@ -57,22 +57,6 @@ randomQuestion();
 updateQuestions(currentQuestionIndex);
 updateScore();
 
-function updateQuestions(currentQuestion) {
-  optionsElement.forEach((button, index) => {
-    const optionText = button.querySelector(".optionText");
-    optionText.textContent = questions[currentQuestion].answers[index];
-    button.classList.remove("clicked");
-  });
-  body.classList.remove("wrongAnswer");
-  body.classList.remove("corectAnswer");
-  questionElement.textContent = questions[currentQuestion].question;
-}
-
-function updateScore() {
-  correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
-  totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
-}
-
 clickedQuestion();
 function clickedQuestion() {
   optionsElement.forEach((button, index) => {
@@ -94,6 +78,22 @@ function AnsweredQuestion() {
   answeredQuestion = true;
 }
 
+function updateQuestions(currentQuestion) {
+  optionsElement.forEach((button, index) => {
+    const optionText = button.querySelector(".optionText");
+    optionText.textContent = questions[currentQuestion].answers[index];
+    button.classList.remove("clicked");
+  });
+  body.classList.remove("wrongAnswer");
+  body.classList.remove("corectAnswer");
+  questionElement.textContent = questions[currentQuestion].question;
+}
+
+function updateScore() {
+  correctAnswersElement.textContent = `${correctAnswers}/${answeredQuestions} Correct`;
+  totalQuestionsElement.textContent = `Question ${answeredQuestions}/${totalQuestions}`;
+}
+
 compareAnswersButton.addEventListener("click", () => {
   if (answeredQuestion === true) {
     console.log("click true");
@@ -103,17 +103,6 @@ compareAnswersButton.addEventListener("click", () => {
     return;
   }
   answeredQuestion = false;
-});
-
-nextButton.addEventListener("click", () => {
-  if (comparedQuestion === true) {
-    console.log("click true");
-    isQuizDone();
-  } else {
-    console.log("click false");
-    return;
-  }
-  comparedQuestion = false;
 });
 
 function compareAnswers(answer, question) {
@@ -138,6 +127,17 @@ function compareAnswers(answer, question) {
   updateScore();
   console.log(currentQuestionIndex);
 }
+
+nextButton.addEventListener("click", () => {
+  if (comparedQuestion === true) {
+    console.log("click true");
+    isQuizDone();
+  } else {
+    console.log("click false");
+    return;
+  }
+  comparedQuestion = false;
+});
 
 function isQuizDone() {
   if (answeredQuestions === questions.length) {
