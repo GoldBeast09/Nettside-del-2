@@ -10,7 +10,7 @@ const compareAnswersButton = document.getElementById("compareAnswers");
 
 const finalScore = document.getElementsByClassName("correctAnswers");
 
-import { playAudio } from "./Sound.js";
+import { playAudio } from "../Sound.js";
 
 const questions = [
   {
